@@ -9,7 +9,7 @@ resources:
 - repo: self
 
 variables:
-  imageRepo: k8sexamplesacr
+  imageRepo: sampleapp
   tag: '$(Build.BuildId)'
   poolName: linux-pool
 
