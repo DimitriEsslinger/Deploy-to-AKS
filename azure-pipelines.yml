@@ -26,7 +26,7 @@ stages:
       displayName: Build an image and push it to ACR
       inputs:
         containerRegistry: 'acr-connection'
-        repository: '$(sampleapp)'
+        repository: '$(imageRepo)'
         command: 'buildAndPush'
         Dockerfile: '$(Build.SourcesDirectory)/app/Dockerfile'
         tags: |
