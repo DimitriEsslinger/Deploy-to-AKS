@@ -23,7 +23,7 @@ stages:
       name: $(poolName)
     steps:
     - task: Docker@2
-      displayName: Build an image
+      displayName: Build an image and push it to ACR
       inputs:
         containerRegistry: 'acr-connection'
         repository: '$(sampleapp)'
