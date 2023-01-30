@@ -17,3 +17,6 @@ spec:
           image: testacrxx1.azurecr.io/sampleapp
           ports:
           - containerPort: 80
+      imagePullSecrets:
+        - name: k8sexampleacrauth
+        
