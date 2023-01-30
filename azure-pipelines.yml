@@ -1,6 +1,6 @@
 
-trigger:
-- main
+trigger: none
+#- main
 
 resources:
 - repo: self
@@ -39,6 +39,7 @@ stages:
   dependsOn: Build
   variables:
     acrsecret: k8sexampleacrauth
+    acrdevurl: 'testacrxx1.azurecr.io'
   jobs:
   - deployment: Deploy
     displayName: Deploy to AKS
@@ -68,4 +69,5 @@ stages:
               manifests: |
                 $(Pipeline.Workspace)/manifests/deployment.yml
                 $(Pipeline.Workspace)/manifests/service.yml
+              containers: '$(acrdevurl)/$(imageRepo):$(tag)'
 
