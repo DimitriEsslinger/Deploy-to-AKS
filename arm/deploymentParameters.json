@@ -8,6 +8,9 @@
       "location": {
         "value": "westeu"
       },
+      "dnsPrefix": {
+        "value": "test-aks-cluster2-dns"
+      },
       "osDiskSizeGB": {
         "value": 128
       },
