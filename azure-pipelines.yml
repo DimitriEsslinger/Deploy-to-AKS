@@ -54,13 +54,15 @@ stages:
         artifactName: 'manifests'
         targetPath: '$(Pipeline.Workspace)/manifests'
     - task: KubernetesManifest@0
+      displayName: Create secret
       inputs:
         action: 'createSecret'
-        kubernetesServiceConnection: 'aks-connection'
-        namespace: 'default'
         secretType: 'dockerRegistry'
         secretName: '$(acrsecret)'
         dockerRegistryEndpoint: 'acr-connection'
+        kubernetesServiceConnection: 'aks-connection'
+        namespace: 'default'
+        
     - task: KubernetesManifest@0
       inputs:
         action: 'deploy'
