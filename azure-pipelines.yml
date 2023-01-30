@@ -11,6 +11,16 @@ variables:
   poolName: linux-pool
 
 stages:
+- stage: Infra
+  displayName: Deploy Infra
+  jobs:
+  - job: Infra
+    displayName: Deploy Infra
+    pool: 
+      name: $(poolName)
+    steps:
+      - task: 
+
 - stage: Build
   displayName: Build image
   jobs:
