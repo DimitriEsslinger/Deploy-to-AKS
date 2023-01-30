@@ -19,7 +19,18 @@ stages:
     pool: 
       name: $(poolName)
     steps:
-      - task: 
+      - task: AzureResourceManagerTemplateDeployment@3
+        inputs:
+          deploymentScope: 'Resource Group'
+          azureResourceManagerConnection: 'Azure Connection'
+          subscriptionId: '6c15e7be-7f86-40ae-a17f-bb8dbc94bdf5'
+          action: 'Create Or Update Resource Group'
+          resourceGroupName: 'lab-aks2-rg'
+          location: 'West Europe'
+          templateLocation: 'Linked artifact'
+          csmFile: 'arm/aks-arm.json'
+          csmParametersFile: 'arm/deploymentParameters.json'
+          deploymentMode: 'Incremental'
 
 - stage: Build
   displayName: Build image
