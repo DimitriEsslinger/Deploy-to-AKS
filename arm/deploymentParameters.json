@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "clusterName": {
+        "value": "test-aks-cluster2"
+      },
+      "location": {
+        "value": "westeu"
+      },
+      "osDiskSizeGB": {
+        "value": 128
+      },
+      "agentCount": {
+        "value": 2
+      },
+      "agentVMSize": {
+        "value": "Standard_B2s"
+      },
+      "linuxAdminUsername": {
+        "value": "dima"
+      },
+      "sshRSAPublicKey": {
+        "value": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDlYUJTG6qfiVPfqN7NXoYirmUhu7fn/GQ56LrPiGS8q+0iO423HzJJnxlf4IA+ZQkCdunutrcEjEp2XkR0YSKpMu+Wcz0SaEpCDjnqfuQM5QTLsgag840XE2wQnifL2ojw8tcPnttRduD5a/z3MP0XiG8zHEhsNjJFzZ7YHNrcwCaCHs4lqxbxaYw3+Ecfrev+igZB4T0DiMZeCgTyvK4a1xjiYr//hbML2eX/aB9HWPFV0BxFyxLL7SEouARCVsA/2aOPS5Ut95DoBEEyEwjlFBjIYlgeD4ouQXDz/4kgP6Ojb22Z3//X+vaAnXWpNXSJYgd0mRFimeqBDnsSpKd4oxwMC28I88pgFbtE+QwvutsmHGpva120DqChP6HTJJ+G3o7gCIubXpDStyTCB2Jl2u7xYSqBaXLfQPlXHkDr7urosOzAziTRpjAzzd59eve7C+8pcMqwDEiBVfubfkKwZMIp6iwH4xlXaghpkQzzZ2GXuhXw+X7PjMwyqkE7NZU= dima@linuxvm"
+      }
+    }
+  }
