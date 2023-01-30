@@ -6,7 +6,7 @@
         "value": "test-aks-cluster2"
       },
       "location": {
-        "value": "westeu"
+        "value": "westeurope"
       },
       "dnsPrefix": {
         "value": "test-aks-cluster2-dns"
