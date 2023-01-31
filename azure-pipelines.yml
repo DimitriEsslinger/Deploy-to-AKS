@@ -6,6 +6,7 @@ resources:
 - repo: self
 
 variables:
+  subscriptionId: '6c15e7be-7f86-40ae-a17f-bb8dbc94bdf5'
   location: 'West Europe'
   aks-infra-rg: 'lab-aks2-rg'
   aks-infra-aux-rg: 'lab-aks2-aux-rg'
@@ -27,7 +28,7 @@ stages:
         inputs:
           deploymentScope: 'Resource Group'
           azureResourceManagerConnection: 'Azure Connection'
-          subscriptionId: '6c15e7be-7f86-40ae-a17f-bb8dbc94bdf5'
+          subscriptionId: $(subscriptionId)
           action: 'Create Or Update Resource Group'
           resourceGroupName: '$(aks-infra-rg)'
           location: '$(location)'
