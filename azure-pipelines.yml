@@ -40,7 +40,6 @@ stages:
             -clusterName "$(clusterName)"
             -nodeResourceGroup "$(aks-infra-aux-rg)"
             -location "$(location)"
-            -kubernetesVersion "123"
           deploymentMode: 'Validation'
 
 - stage: Build
