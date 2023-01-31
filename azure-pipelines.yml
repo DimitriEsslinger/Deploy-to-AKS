@@ -1,6 +1,6 @@
 # Prerequisites:
 # 1. Create required Azure resource groups : lab-aks2-rg and lab-acr2-rg.
-# 2. Create service 3 connections : Azure, GitHub, AKS amd ACR.
+# 2. Create service 4 connections : Azure, GitHub, AKS amd ACR.
 
 trigger: none
 #- main
