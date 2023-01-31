@@ -38,7 +38,7 @@
       },
       "kubernetesVersion": {
         "type": "string",
-        "defaultValue": "1.23.x",
+        "defaultValue": "1.24.x",
         "metadata": {
           "description": "Version of the Kubernetes cluster."
         }
