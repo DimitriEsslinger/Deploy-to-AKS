@@ -11,6 +11,7 @@ variables:
   aks-infra-rg: 'lab-aks2-rg'
   aks-infra-aux-rg: 'lab-aks2-aux-rg'
   clusterName: 'test-aks-cluster2'
+  kubernetesVersion: '1.23.x'
   imageRepo: sampleapp
   tag: '$(Build.BuildId)'
   poolName: linux-pool
@@ -37,6 +38,7 @@ stages:
           csmParametersFile: 'arm/aks-arm-params.json'
           overrideParameters: |
             -clusterName $(clusterName) 
+            -kubernetesVersion $(kubernetesVersion)
             -nodeResourceGroup $(aks-infra-aux-rg) 
             -location "$(location)"
           deploymentMode: 'Complete'

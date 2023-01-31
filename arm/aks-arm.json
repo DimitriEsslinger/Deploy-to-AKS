@@ -36,6 +36,13 @@
           "description": "Optional DNS prefix to use with hosted Kubernetes API server FQDN."
         }
       },
+      "kubernetesVersion": {
+        "type": "string",
+        "defaultValue": "1.23.x",
+        "metadata": {
+          "description": "Version of the Kubernetes cluster."
+        }
+      },
       "osDiskSizeGB": {
         "type": "int",
         "defaultValue": 0,
@@ -87,6 +94,7 @@
         "properties": {
           "nodeResourceGroup": "[parameters('nodeResourceGroup')]",
           "dnsPrefix": "[parameters('dnsPrefix')]",
+          "kubernetesVersion": "[parameters('kubernetesVersion')]",
           "agentPoolProfiles": [
             {
               "name": "agentpool",
