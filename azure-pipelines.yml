@@ -41,7 +41,7 @@ stages:
             -kubernetesVersion "$(kubernetesVersion)"
             -nodeResourceGroup $(aks-infra-aux-rg) 
             -location "$(location)"
-          deploymentMode: 'Complete'
+          deploymentMode: 'Validation'
 
 - stage: Build
   displayName: Build image
