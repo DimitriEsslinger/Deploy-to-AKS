@@ -35,9 +35,8 @@ stages:
           templateLocation: 'Linked artifact'
           csmFile: 'arm/aks-arm.json'
           csmParametersFile: 'arm/deploymentParameters.json'
-          #overrideParameters: |
-            #-clusterName $(clusterName)
-            #-nodeResourceGroup $(aks-infra-aux-rg)
+          overrideParameters: |
+            -clusterName $(clusterName)
           deploymentMode: 'Incremental'
 
 - stage: Build
