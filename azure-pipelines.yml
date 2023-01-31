@@ -8,10 +8,13 @@ resources:
 variables:
   subscriptionId: '6c15e7be-7f86-40ae-a17f-bb8dbc94bdf5'
   location: 'West Europe'
-  aks-infra-rg: 'lab-aks2-rg'
+  aks-rg: 'lab-aks2-rg'
   aks-infra-aux-rg: 'lab-aks2-aux-rg'
   clusterName: 'test-aks-cluster2'
   kubernetesVersion: '1.23.12'
+  acr-rg: 'lab-acr2-rg'
+  acrName: 'testacrxx2'
+  acrSku: 'Standard'
   imageRepo: sampleapp
   tag: '$(Build.BuildId)'
   poolName: linux-pool
@@ -26,12 +29,13 @@ stages:
       name: $(poolName)
     steps:
       - task: AzureResourceManagerTemplateDeployment@3
+        displayName: Deploy AKS
         inputs:
           deploymentScope: 'Resource Group'
           azureResourceManagerConnection: 'Azure Connection'
           subscriptionId: '$(subscriptionId)'
           action: 'Create Or Update Resource Group'
-          resourceGroupName: '$(aks-infra-rg)'
+          resourceGroupName: '$(aks-rg)'
           location: '$(location)'
           templateLocation: 'Linked artifact'
           csmFile: 'arm/aks-arm.json'
@@ -41,7 +45,24 @@ stages:
             -kubernetesVersion "$(kubernetesVersion)" 
             -nodeResourceGroup $(aks-infra-aux-rg) 
             -location "$(location)"
-          deploymentMode: 'Complete'
+          deploymentMode: 'Validation'
+
+      - task: AzureResourceManagerTemplateDeployment@3
+        displayName: Deploy ACR
+        inputs:
+          deploymentScope: 'Resource Group'
+          azureResourceManagerConnection: 'Azure Connection'
+          subscriptionId: '$(subscriptionId)'
+          action: 'Create Or Update Resource Group'
+          resourceGroupName: '$(acr-rg)'
+          location: '$(location)'
+          templateLocation: 'Linked artifact'
+          csmFile: 'arm/acr-arm.json'
+          overrideParameters: |
+            -acrName $(acrName) 
+            -acrSku "$(acrSku)" 
+            -location "$(location)"
+          deploymentMode: 'Validation'
 
 - stage: Build
   displayName: Build image

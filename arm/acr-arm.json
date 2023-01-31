@@ -1,58 +1,71 @@
 {
-    "type": "Microsoft.ContainerRegistry/registries",
-    "apiVersion": "2022-12-01",
-    "name": "string",
-    "location": "string",
-    "tags": {
-      "tagName1": "tagValue1",
-      "tagName2": "tagValue2"
-    },
-    "sku": {
-      "name": "string"
-    },
-    "identity": {
-      "principalId": "string",
-      "tenantId": "string",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.8.9.13224",
+      "templateHash": "3623591997234573037"
+    }
+  },
+  "parameters": {
+    "acrName": {
       "type": "string",
-      "userAssignedIdentities": {}
+      "metadata": {
+        "description": "Name of the azure container registry (must be globally unique)"
+      },
+      "maxLength": 50,
+      "minLength": 5
     },
-    "properties": {
-      "adminUserEnabled": "bool",
-      "dataEndpointEnabled": "bool",
-      "encryption": {
-        "keyVaultProperties": {
-          "identity": "string",
-          "keyIdentifier": "string"
-        },
-        "status": "string"
+    "acrAdminUserEnabled": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Enable an admin user that has push/pull permission to the registry."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for all resources."
+      }
+    },
+    "acrSku": {
+      "type": "string",
+      "defaultValue": "Basic",
+      "metadata": {
+        "description": "Tier of your Azure Container Registry."
       },
-      "networkRuleBypassOptions": "string",
-      "networkRuleSet": {
-        "defaultAction": "string",
-        "ipRules": [
-          {
-            "action": "Allow",
-            "value": "string"
-          }
-        ]
+      "allowedValues": [
+        "Basic",
+        "Standard",
+        "Premium"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ContainerRegistry/registries",
+      "apiVersion": "2021-09-01",
+      "name": "[parameters('acrName')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "displayName": "Container Registry",
+        "container.registry": "[parameters('acrName')]"
       },
-      "policies": {
-        "exportPolicy": {
-          "status": "string"
-        },
-        "quarantinePolicy": {
-          "status": "string"
-        },
-        "retentionPolicy": {
-          "days": "int",
-          "status": "string"
-        },
-        "trustPolicy": {
-          "status": "string",
-          "type": "Notary"
-        }
+      "sku": {
+        "name": "[parameters('acrSku')]"
       },
-      "publicNetworkAccess": "string",
-      "zoneRedundancy": "string"
+      "properties": {
+        "adminUserEnabled": "[parameters('acrAdminUserEnabled')]"
+      }
+    }
+  ],
+  "outputs": {
+    "acrLoginServer": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))).loginServer]"
     }
   }
+}
