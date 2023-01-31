@@ -34,7 +34,7 @@ stages:
           location: '$(location)'
           templateLocation: 'Linked artifact'
           csmFile: 'arm/aks-arm.json'
-          csmParametersFile: 'arm/deploymentParameters.json'
+          csmParametersFile: 'arm/aks-arm-params.json'
           overrideParameters: |
             -clusterName $(clusterName) 
             -nodeResourceGroup $(aks-infra-aux-rg) 
