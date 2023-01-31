@@ -23,6 +23,12 @@
           "description": "The location of the Managed Cluster resource."
         }
       },
+      "nodeResourceGroup": {
+        "type": "string",
+        "metadata": {
+          "description": "The node resource group of the Managed Cluster resource."
+        }
+      },
       "dnsPrefix": {
         "type": "string",
         "metadata": {
@@ -72,11 +78,13 @@
         "type": "Microsoft.ContainerService/managedClusters",
         "apiVersion": "2022-05-02-preview",
         "name": "[parameters('clusterName')]",
+
         "location": "[parameters('location')]",
         "identity": {
           "type": "SystemAssigned"
         },
         "properties": {
+          "nodeResourceGroup": "[parameters('nodeResourceGroup')]",
           "dnsPrefix": "[parameters('dnsPrefix')]",
           "agentPoolProfiles": [
             {
