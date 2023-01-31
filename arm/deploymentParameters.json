@@ -8,9 +8,6 @@
       "location": {
         "value": "westeurope"
       },
-      "nodeResourceGroup": {
-        "value": "lab-aks2-rg.aux"
-      },
       "dnsPrefix": {
         "value": "test-aks-cluster2-dns"
       },
