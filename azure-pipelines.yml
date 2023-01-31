@@ -38,9 +38,9 @@ stages:
           csmParametersFile: 'arm/aks-arm-params.json'
           overrideParameters: |
             -clusterName "$(clusterName)"
-            -kubernetesVersion "123"
             -nodeResourceGroup "$(aks-infra-aux-rg)"
             -location "$(location)"
+            -kubernetesVersion "123"
           deploymentMode: 'Validation'
 
 - stage: Build
