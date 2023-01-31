@@ -6,6 +6,10 @@ resources:
 - repo: self
 
 variables:
+  location: 'West Europe'
+  aks-infra-rg: 'lab-aks2-rg'
+  aks-infra-aux-rg: 'lab-aks2-aux-rg'
+  clusterName: 'test-aks-cluster2'
   imageRepo: sampleapp
   tag: '$(Build.BuildId)'
   poolName: linux-pool
@@ -25,11 +29,14 @@ stages:
           azureResourceManagerConnection: 'Azure Connection'
           subscriptionId: '6c15e7be-7f86-40ae-a17f-bb8dbc94bdf5'
           action: 'Create Or Update Resource Group'
-          resourceGroupName: 'lab-aks2-rg'
-          location: 'West Europe'
+          resourceGroupName: '$(aks-infra-rg)'
+          location: '$(location)'
           templateLocation: 'Linked artifact'
           csmFile: 'arm/aks-arm.json'
           csmParametersFile: 'arm/deploymentParameters.json'
+          overrideParameters: |
+            -clusterName $(clusterName)
+            -nodeResourceGroup $(aks-infra-aux-rg)
           deploymentMode: 'Incremental'
 
 - stage: Build
