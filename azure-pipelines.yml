@@ -38,7 +38,7 @@ stages:
           overrideParameters: |
             -clusterName $(clusterName)
             -nodeResourceGroup $(aks-infra-aux-rg)
-          deploymentMode: 'Complete'
+          deploymentMode: 'Validation'
 
 - stage: Build
   displayName: Build image
