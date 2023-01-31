@@ -25,7 +25,6 @@
       },
       "nodeResourceGroup": {
         "type": "string",
-        "defaultValue": "lab-aks2-aux-rg",
         "metadata": {
           "description": "The node resource group of the Managed Cluster resource."
         }
