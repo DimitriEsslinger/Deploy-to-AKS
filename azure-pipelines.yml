@@ -11,7 +11,7 @@ variables:
   aks-infra-rg: 'lab-aks2-rg'
   aks-infra-aux-rg: 'lab-aks2-aux-rg'
   clusterName: 'test-aks-cluster2'
-  kubernetesVersion: '1.23.x'
+  kubernetesVersion: '1.23.12'
   imageRepo: sampleapp
   tag: '$(Build.BuildId)'
   poolName: linux-pool
