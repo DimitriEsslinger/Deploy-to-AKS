@@ -37,8 +37,8 @@ stages:
           csmFile: 'arm/aks-arm.json'
           csmParametersFile: 'arm/aks-arm-params.json'
           overrideParameters: |
-            -clusterName "$(clusterName)"
-            -nodeResourceGroup "$(aks-infra-aux-rg)"
+            -clusterName $(clusterName)
+            -nodeResourceGroup $(aks-infra-aux-rg)
             -location "$(location)"
           deploymentMode: 'Validation'
 
