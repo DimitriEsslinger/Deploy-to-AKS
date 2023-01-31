@@ -9,7 +9,7 @@ variables:
   subscriptionId: '6c15e7be-7f86-40ae-a17f-bb8dbc94bdf5'
   location: 'West Europe'
   aks-infra-rg: 'lab-aks2-rg'
-  nodeResourceGroup: 'lab-aks2-aux-rg'
+  aks-infra-aux-rg: 'lab-aks2-aux-rg'
   clusterName: 'test-aks-cluster2'
   imageRepo: sampleapp
   tag: '$(Build.BuildId)'
@@ -37,7 +37,7 @@ stages:
           csmParametersFile: 'arm/deploymentParameters.json'
           overrideParameters: |
             -clusterName $(clusterName)
-            -nodeResourceGroup $(nodeResourceGroup)
+            -nodeResourceGroup "$(aks-infra-aux-rg)"
           deploymentMode: 'Incremental'
 
 - stage: Build
