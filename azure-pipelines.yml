@@ -28,7 +28,7 @@ stages:
         inputs:
           deploymentScope: 'Resource Group'
           azureResourceManagerConnection: 'Azure Connection'
-          subscriptionId: $(subscriptionId)
+          subscriptionId: '$(subscriptionId)'
           action: 'Create Or Update Resource Group'
           resourceGroupName: '$(aks-infra-rg)'
           location: '$(location)'
@@ -36,8 +36,9 @@ stages:
           csmFile: 'arm/aks-arm.json'
           csmParametersFile: 'arm/deploymentParameters.json'
           overrideParameters: |
+            -clusterName $(clusterName)
             -nodeResourceGroup $(aks-infra-aux-rg)
-          deploymentMode: 'Incremental'
+          deploymentMode: 'Complete'
 
 - stage: Build
   displayName: Build image
