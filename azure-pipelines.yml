@@ -18,6 +18,7 @@ variables:
   imageRepo: sampleapp
   tag: '$(Build.BuildId)'
   poolName: linux-pool
+  deploymentMode: 'Complete'
 
 stages:
 - stage: Infra
@@ -45,7 +46,7 @@ stages:
             -kubernetesVersion "$(kubernetesVersion)" 
             -nodeResourceGroup $(aks-infra-aux-rg) 
             -location "$(location)"
-          deploymentMode: 'Validation'
+          deploymentMode: $(deploymentMode)
 
       - task: AzureResourceManagerTemplateDeployment@3
         displayName: Deploy ACR
@@ -62,7 +63,7 @@ stages:
             -acrName $(acrName) 
             -acrSku "$(acrSku)" 
             -location "$(location)"
-          deploymentMode: 'Validation'
+          deploymentMode: $(deploymentMode)
 
 - stage: Build
   displayName: Build image
